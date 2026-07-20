@@ -119,7 +119,7 @@ export function AuthProvider({ children }) {
         refreshUser,
       }}
     >
-      {children}
+      {children} 
     </AuthContext.Provider>
   );
 }
