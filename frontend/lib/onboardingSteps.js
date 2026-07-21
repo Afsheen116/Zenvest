@@ -50,17 +50,18 @@ export const ONBOARDING_STEPS = [
     type: "choice",
     title: "Where does most of your money go?",
     options: [
-      { value: "entertainment", label: "Entertainment 🎮" },
-      { value: "health", label: "Health 🏥" },
-      { value: "education", label: "Education 📚" },
-      { value: "shopping", label: "Shopping 🛍️" },
-      { value: "coffee", label: "Coffee ☕" },
+      { value: "rent", label: "Rent 🏠" },
+      { value: "food_groceries", label: "Food & Groceries 🛒" },
+      { value: "transport", label: "Transport 🚗" },
+      { value: "bills_utilities", label: "Bills & Utilities 💡" },
+      { value: "family", label: "Family 👨‍👩‍👧‍👦" },
     ],
   },
   {
     field: "debts",
     type: "choice",
-    title: "Do you have any other debts, like auto loan, student loan, personal loan or anything?",
+    title:
+      "Do you have any other debts, like auto loan, student loan, personal loan or anything?",
     options: [
       { value: "yes", label: "Yes 💸" },
       { value: "no", label: "No loans, I am free currently 🎉" },
