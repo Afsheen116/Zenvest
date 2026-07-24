@@ -18,9 +18,8 @@ export default function SignupPage() {
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  // Show Password States
+  // Show Password State
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   // Password Rules
   const passwordRules = {
@@ -154,7 +153,7 @@ export default function SignupPage() {
               </label>
             </div>
 
-            {password.length > 0 && (
+            {password.length > 0 && !isPasswordValid && (
               <div className="mt-3 rounded-xl border border-gray-200 bg-gray-50 p-3">
                 <p className="text-sm font-semibold text-gray-700 mb-2">
                   Password Requirements
@@ -224,7 +223,7 @@ export default function SignupPage() {
                     {/* Confirm Password */}
           <div>
             <input
-              type={showConfirmPassword ? "text" : "password"}
+              type={showPassword ? "text" : "password"}
               value={confirmPassword}
               onChange={(e) => {
                 setConfirmPassword(e.target.value);
@@ -233,26 +232,6 @@ export default function SignupPage() {
               placeholder="Confirm Password"
               className="input-surface w-full px-4 py-2.5 rounded-xl"
             />
-
-            {/* Show Confirm Password Checkbox */}
-            <div className="mt-2 flex items-center gap-2">
-              <input
-                id="showConfirmPassword"
-                type="checkbox"
-                checked={showConfirmPassword}
-                onChange={() =>
-                  setShowConfirmPassword(!showConfirmPassword)
-                }
-                className="h-4 w-4 cursor-pointer"
-              />
-
-              <label
-                htmlFor="showConfirmPassword"
-                className="text-sm text-gray-600 cursor-pointer"
-              >
-                Show Confirm Password
-              </label>
-            </div>
           </div>
 
           {/* Error */}

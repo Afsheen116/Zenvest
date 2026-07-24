@@ -91,7 +91,15 @@ export default function OnboardingPage() {
           <h1 className="text-xl font-bold zv-gradient-text">Zenvest</h1>
         </div>
 
-        {phase === INTRO && <IntroScreen onStart={() => setPhase("question")} />}
+        {phase === INTRO && (
+          <IntroScreen
+            onStart={() => setPhase("question")}
+            onSkipToDashboard={() => {
+              markComplete();
+              router.push("/dashboard");
+            }}
+          />
+        )}
 
         {phase === "question" && currentStep.type === "choice" && (
           <ChoiceScreen
@@ -141,7 +149,7 @@ function ProgressBar({ stepNumber, totalSteps }) {
   );
 }
 
-function IntroScreen({ onStart }) {
+function IntroScreen({ onStart, onSkipToDashboard }) {
   return (
     <div className="text-center">
       <h2 className="text-lg font-semibold text-gray-800 mb-3">
@@ -151,12 +159,20 @@ function IntroScreen({ onStart }) {
         You can skip if you do not feel like answering and your answer won&apos;t
         be stored or shared.
       </p>
-      <button
-        onClick={onStart}
-        className="w-full py-3 rounded-xl zv-gradient text-white font-semibold shadow-lg shadow-violet-200 hover:-translate-y-0.5 transition"
-      >
-        Start
-      </button>
+      <div className="flex flex-col gap-3">
+        <button
+          onClick={onStart}
+          className="w-full py-3 rounded-xl zv-gradient text-white font-semibold shadow-lg shadow-violet-200 hover:-translate-y-0.5 transition"
+        >
+          Start
+        </button>
+        <button
+          onClick={onSkipToDashboard}
+          className="w-full py-2.5 text-sm text-zv-gray-400 hover:text-gray-600 transition"
+        >
+          Skip to Dashboard
+        </button>
+      </div>
     </div>
   );
 }

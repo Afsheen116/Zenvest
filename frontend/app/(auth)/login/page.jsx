@@ -12,6 +12,7 @@ export default function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -93,12 +94,31 @@ export default function LoginPage() {
 
             <input
               id="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError("");
+              }}
               placeholder="Enter your password"
               className="input-surface w-full px-4 py-2.5 rounded-xl"
             />
+
+            <div className="mt-2 flex items-center gap-2">
+              <input
+                id="showPassword"
+                type="checkbox"
+                checked={showPassword}
+                onChange={() => setShowPassword(!showPassword)}
+                className="h-4 w-4 cursor-pointer"
+              />
+              <label
+                htmlFor="showPassword"
+                className="text-sm text-gray-600 cursor-pointer"
+              >
+                Show Password
+              </label>
+            </div>
           </div>
 
           {error && (
